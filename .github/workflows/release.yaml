@@ -64,7 +64,7 @@ jobs:
 
       # 创建下载文件的目录
       - name: Create Download Dir
-      - run: |
+        run: |
           mkdir -p build/win
           mkdir -p build/mac
 
