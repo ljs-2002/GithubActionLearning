@@ -38,6 +38,8 @@ jobs:
 
       # 打包项目
       - name: Make the project
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: yarn make --${{ matrix.arch }}
 
       # 上传构建文件作为工件（Artifacts）
