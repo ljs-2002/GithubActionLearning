@@ -62,28 +62,38 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 创建下载文件的目录
+      - name: Create Download Dir
+      - run: |
+          mkdir -p build/win
+          mkdir -p build/mac
+
       # 下载先前上传的构建文件 macOS x64
       - name: Download macOS x64 build artifacts
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts-macos-latest-x64
+          path: build/mac
 
       # 下载先前上传的构建文件 macOS arm64
       - name: Download macOS arm64 build artifacts
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts-macos-latest-arm64
+          path: build/mac
 
       # 下载先前上传的构建文件 Windows x64
       - name: Download Windows x64 build artifacts
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts-windows-latest-x64
+          path: build/win
 
       - name: Download Windows arm64 build artifacts
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts-windows-latest-arm64
+          path: build/win
 
 
       # 创建 GitHub Release 草稿
