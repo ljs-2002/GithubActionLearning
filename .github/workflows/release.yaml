@@ -38,11 +38,7 @@ jobs:
 
       # 打包项目
       - name: Make the project
-        run: |
-          if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-            yarn make -- --arch=${{ matrix.arch }}
-          else
-            yarn make -- --arch=${{ matrix.arch }}
+        run: yarn make -- --arch=${{ matrix.arch }}
 
       # 上传构建文件作为工件（Artifacts）
       - name: Upload build artifacts
