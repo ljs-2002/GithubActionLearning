@@ -48,8 +48,10 @@ jobs:
         with:
           name: build-artifacts-${{ matrix.os }}-${{ matrix.arch }}
           path: |
-            build/win/**
-            build/mac/**
+            build/win/*.zip
+            build/win/*.exe
+            build/mac/*.dmg
+            build/mac/*.zip
 
   release:
     needs: build
