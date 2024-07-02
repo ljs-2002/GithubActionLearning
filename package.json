@@ -1,0 +1,106 @@
+{
+  "name": "linnotes",
+  "private": true,
+  "version": "1.0.1",
+  "description": "desk notes software",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "electron .",
+    "electron": "wait-on tcp:4000 && nodemon --watch ./ --ext .js,.html,.css,.vue --exec yarn start",
+    "dev": "cross-env NODE_ENV=development concurrently -k \"npx vite --port=4000\" \"yarn electron\"",
+    "make": "electron-builder"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ljs-2002/LinNotes.git"
+  },
+  "author": "ljs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ljs-2002/LinNotes/issues"
+  },
+  "homepage": "https://github.com/ljs-2002/LinNotes#readme",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "normalize.css": "^8.0.1",
+    "pinia": "^2.1.7",
+    "store2": "^2.14.3",
+    "vditor": "^3.10.4",
+    "vue": "^3.4.21",
+    "vue-draggable-plus": "^0.5.0",
+    "vue-router": "^4.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "asar": "^3.2.0",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^30.0.9",
+    "electron-builder": "^24.13.3",
+    "sass": "^1.77.6",
+    "sass-loader": "^14.2.1",
+    "vite": "^5.2.0",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "productName": "LinNotes",
+    "copyright": "Copyright © 2024 ljs",
+    "appId": "com.ljs.linnote",
+    "files": [
+      "**/*",
+      "!*.md",
+      "!.vscode",
+      "!.history",
+      "！src/assets",
+      "!index.html",
+      "!src/components",
+      "!src/pages",
+      "!src/router",
+      "!src/storage",
+      "!src/style",
+      "!src/*.vue",
+      "!src/main.js"
+    ],
+    "win": {
+      "icon": "./public/icon.png",
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "extraResources": [
+        {
+          "from": "./public",
+          "to": "./public"
+        }
+      ]
+    },
+    "mac": {
+        "icon": "./public/icon.icns",
+        "target": [
+          "dmg",
+          "zip"
+        ],
+      "darkModeSupport": false,
+      "extraResources": [
+          {
+          "from": "./public",
+          "to": "."
+          }
+      ]
+    },
+    "directories": {
+      "output": "build/${os}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
