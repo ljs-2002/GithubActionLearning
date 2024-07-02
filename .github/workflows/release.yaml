@@ -38,7 +38,7 @@ jobs:
 
       # 打包项目
       - name: Make the project
-        run: yarn make -- --arch=${{ matrix.arch }}
+        run: yarn make --${{ matrix.arch }}
 
       # 上传构建文件作为工件（Artifacts）
       - name: Upload build artifacts
